@@ -100,7 +100,11 @@ var io = require('socket.io').listen(server);
  
  io.on('connection', function(socket){
   console.log('a user connected');
+   socket.broadcast.emit('chat message',"User Connected!");
+ //  io.emit('chat message', "User Connected!");
   socket.on('disconnect', function(){
+   socket.broadcast.emit('chat message',"User Disconnected!");
+  // io.emit('chat message', "User Disconnected!");
     console.log('user disconnected');
   });
 });
